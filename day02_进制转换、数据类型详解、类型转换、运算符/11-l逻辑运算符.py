@@ -26,3 +26,6 @@ print(3 and 5 and 2 and 'hello')  # hello
 print(0 or [] or 5 or 'hahah')  # 5
 print("" or [] or {} or 0)  # 0
 
+# 字符串和数字比较规则：==结果是False,!=结果是true;其他比较运算会报错
+print('12' == 12)
+print('12' != 12)
