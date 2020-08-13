@@ -17,11 +17,10 @@ b = 0b1010110101
 # print 打印数字的时候。默认是按十进制输出
 print(b)
 
-# 0o 开头表示八进制（python3）
+# 0o 开头表示八进制（python3，python2中可以是0开头）
 c = 0o23
 print(c)
 
 # = 0x 开始表示十六进制
 d = 0x34
 print(d)
-
