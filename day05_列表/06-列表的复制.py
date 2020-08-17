@@ -4,6 +4,9 @@
 
 nums = [2, 3, 15, 34, 43, 7, 5, 9]
 
+for index, num in enumerate(nums):
+    print(num, index)
+
 num01 = nums  # 两个共享同一块内存，相互影响
 
 print('nums={},nums01={}'.format(id(nums), id(num01)))
@@ -14,6 +17,7 @@ print('nums={},x={}'.format(id(nums), id(x)))
 
 # 还可以使用copy模块实现拷贝
 import copy
+
 a = copy.copy(nums)  # 等价于x.copy,都是浅克隆
 print('nums={},a={}'.format(id(nums), id(a)))
 
@@ -22,6 +26,3 @@ print(a)
 # 切片其实就是一个浅拷贝
 b = nums[1:]
 print('nums={},b={}'.format(id(nums), id(b)))
-
-
-
