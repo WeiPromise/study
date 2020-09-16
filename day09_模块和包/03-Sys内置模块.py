@@ -11,7 +11,7 @@ print('hello')
 # print('hehehe')
 
 # 结果是一个列表，表示查找模块的路径
-# print(sys.path)
+print(sys.path)
 
 # 用来接受用户的输入，和input相关
 # sys.stdin
