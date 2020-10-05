@@ -12,8 +12,17 @@ class Person(object):
     def  __eq__(self, other):
         return self.name == other.name and self.age == other.age
 
+    def __ne__(self, other):
+        return self.name != other.name and self.age != other.age
+
+    def __gt__(self, other):
+        return self.age > other.age
+
+
+
 p1 = Person('znagsan',18)
 p2 = Person('znagsan',18)
+p3 = Person('lisi',19)
 
 # p1和p2是同一个对象吗？不是
 
@@ -24,6 +33,12 @@ print('0x%X' % id(p2)) # 0x26E6A85CE10
 
 print(p1 is p2)
 print(p1 == p2)
+
+# ！= 本质是调用__ne__方法，或者__eq__ 方法取反
+print(p1 != p2)
+
+# >调用__gt__方法,其他>=/<=/+/-/*//同理
+print(p1 > p2)
 
 
 num1 = [1,2,3]
