@@ -1,0 +1,26 @@
+{
+  "num": 3,
+  "all_student": [
+    {
+      "tel": "132123",
+      "s_id": "stu_0001",
+      "gender": "nan",
+      "age": "12",
+      "name": "lisi"
+    },
+    {
+      "tel": "21342",
+      "s_id": "stu_0002",
+      "gender": "nan",
+      "age": "13",
+      "name": "wangwu"
+    },
+    {
+      "tel": "123",
+      "s_id": "stu_0003",
+      "gender": "nv",
+      "age": "12",
+      "name": "tim"
+    }
+  ]
+}
