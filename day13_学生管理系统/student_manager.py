@@ -26,10 +26,10 @@ def add_student():
         s_gender = input('请输入学生性别：')
         s_tel = input('请输入学生电话：')
 
-        num = data.get('num',0)
+        num = data.get('num', 0)
         # zfill(4) ,字符串前面补0
-        s_id = 'stu_'+str(num+1).zfill(4)
-        s = model.Student(s_id,s_name, s_age, s_gender, s_tel)
+        s_id = 'stu_' + str(num + 1).zfill(4)
+        s = model.Student(s_id, s_name, s_age, s_gender, s_tel)
         students.append(s.__dict__)
         data = {'all_student': students, 'num': len(students)}
 
@@ -42,8 +42,32 @@ def add_student():
 
 
 def show_student():
-    x = input('1、查看所有学生\n2、根据姓名查找\n3、根据学号查找\n4.其他：返回\n请选择：')
-    pass
+    operator = input('1、查看所有学生\n2、根据姓名查找\n3、根据学号查找\n4.其他：返回\n请选择：')
+
+    data = file_manager.read_json(teacher_name + '.json', {})
+    students = data.get('all_student', [])
+
+    key = value = ''
+
+    if operator == '1':
+        pass
+    elif operator == '2':
+        value = input('请输入学生姓名：')
+        key = 'name'
+    elif operator == '3':
+        value = input('请输入学生学号：')
+        key = 's_id'
+    else:
+        return
+    # 这里需要转换成list,不然判空有问题，迭代器没有判空这个说法
+    students = list(filter(lambda student: student.get(key,'').find(value) >= 0, students))
+
+    if  not students:
+        print('未找到学生')
+        return
+
+    for student in students:
+        print('学号：{s_id}，姓名：{name}，性别：{gender}，年龄：{age}，电话：{tel}'.format(**student))
 
 
 def modify_studxent():
