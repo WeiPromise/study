@@ -60,9 +60,9 @@ def show_student():
     else:
         return
     # 这里需要转换成list,不然判空有问题，迭代器没有判空这个说法
-    students = list(filter(lambda student: student.get(key,'').find(value) >= 0, students))
+    students = list(filter(lambda student: student.get(key, '').find(value) >= 0, students))
 
-    if  not students:
+    if not students:
         print('未找到学生')
         return
 
@@ -75,7 +75,46 @@ def modify_studxent():
 
 
 def del_student():
-    pass
+    data = file_manager.read_json(teacher_name + '.json', {})
+    students = data.get('all_student', [])
+
+    if not students:
+        print('该老师还没有学生，请先添加')
+        return
+
+    operator = input('1、按姓名删\n2、按学号删\n其他：返回\n请选择：')
+
+    key = value = ''
+
+    if operator == '1':
+        value = input('请输入学生姓名：')
+        key = 'name'
+    elif operator == '2':
+        value = input('请输入学生学号：')
+        key = 's_id'
+    else:
+        return
+
+    del_students = list(filter(lambda student: student.get(key, '') == value, students))
+
+    if not del_students:
+        print('未找到符合条件的学生')
+        return
+
+    for i, student in enumerate(del_students):
+        print('序号：{},学号：{s_id}，姓名：{name}，性别：{gender}，年龄：{age}，电话：{tel}'.format(i, **student))
+
+    num = input('请输入需要删除学生的序号(0~{})：'.format(len(del_students) - 1))
+
+    if num.isdigit() and 0 <= int(num) <= len(del_students) - 1:
+        students.remove(del_students[int(num)])
+    else:
+        print('输入序号不合法')
+        return
+
+    data['num'] = len(students)
+
+    file_manager.write_json(teacher_name + '.json', data)
 
 
 def show_manager():
